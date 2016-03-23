@@ -28,13 +28,13 @@ public class BetController {
         this.entityLinks = entityLinks;
     }
 
-    @RequestMapping(value = "/bets")
-    public BetIndex listBets() {
-        Link collectionLink = this.entityLinks.linkToCollectionResource(Bet.class);
-        Affordance affordance = AffordanceBuilder.linkTo(methodOn(BetController.class).createBet(new CreateBetRequest(null))).withRel("create-bet");
-        Link createBetForm = new LinkWithMethod(affordance.getHref(), "create-member", HttpMethod.POST);
-        return new BetIndex(asList(new Bet(210)), asList(collectionLink.withSelfRel(), createBetForm));
-    }
+//    @RequestMapping(value = "/bets")
+//    public BetIndex listBets() {
+//        Link collectionLink = this.entityLinks.linkToCollectionResource(Bet.class);
+//        Affordance affordance = AffordanceBuilder.linkTo(methodOn(BetController.class).createBet(new CreateBetRequest(null))).withRel("create-bet");
+//        Link createBetForm = new LinkWithMethod(affordance.getHref(), "create-member", HttpMethod.POST);
+//        return new BetIndex(asList(new Bet(210)), asList(collectionLink.withSelfRel(), createBetForm));
+//    }
 
     @RequestMapping(value = "/bet/{id}")
     public Resource<Bet> getBet(@RequestParam String someFilter, @PathVariable String id) {
@@ -47,10 +47,10 @@ public class BetController {
     }
 
 
-    @RequestMapping(value = "/bets", method = RequestMethod.POST)
-    public CreateBetResponse createBet(@RequestBody CreateBetRequest createRequest){
-        return new CreateBetResponse();
-    }
+//    @RequestMapping(value = "/bets", method = RequestMethod.POST)
+//    public CreateBetResponse createBet(@RequestBody CreateBetRequest createRequest){
+//        return new CreateBetResponse();
+//    }
 
     public static class CreateBetResponse extends ResourceSupport{
         private Bet bet;
